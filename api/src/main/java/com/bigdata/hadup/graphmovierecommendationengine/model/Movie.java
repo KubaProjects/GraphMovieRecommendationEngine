@@ -32,7 +32,7 @@ public class Movie implements Serializable {
     private Integer year;
 
     @Relationship(type = "BELONGS_TO", direction = Relationship.OUTGOING)
-    public Genre genre;
+    public Set<Genre> genres;
 
     @Relationship(type = "ACTED_IN", direction = Relationship.INCOMING)
     public Set<Person> actors;
@@ -112,12 +112,12 @@ public class Movie implements Serializable {
         this.year = year;
     }
 
-    public Genre getGenre() {
-        return genre;
+    public Set<Genre> getGenres() {
+        return genres;
     }
 
-    public void setGenre(Genre genre) {
-        this.genre = genre;
+    public void setGenres(Set<Genre> genres) {
+        this.genres = genres;
     }
 
     public Set<Person> getActors() {
@@ -166,25 +166,6 @@ public class Movie implements Serializable {
 
     public void setEditors(Set<Person> editors) {
         this.editors = editors;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Movie movie = (Movie) o;
-        return id == movie.id &&
-                Objects.equals(additionalId, movie.additionalId) &&
-                Objects.equals(title, movie.title) &&
-                Objects.equals(length, movie.length) &&
-                Objects.equals(numVotes, movie.numVotes) &&
-                Objects.equals(rating, movie.rating) &&
-                Objects.equals(year, movie.year);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, additionalId, title, length, numVotes, rating, year);
     }
 
     @Override

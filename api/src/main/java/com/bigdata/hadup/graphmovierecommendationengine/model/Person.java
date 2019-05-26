@@ -137,23 +137,6 @@ public class Person implements Serializable {
     }*/
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return Objects.equals(id, person.id) &&
-                Objects.equals(additionalId, person.additionalId) &&
-                Objects.equals(name, person.name) &&
-                Objects.equals(birthYear, person.birthYear) &&
-                Objects.equals(deathYear, person.deathYear);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, additionalId, name, birthYear, deathYear);
-    }
-
-    @Override
     public String toString() {
         return "Person{" +
                 "id=" + id +

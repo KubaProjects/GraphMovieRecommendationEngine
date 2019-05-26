@@ -8,8 +8,9 @@ import java.util.Set;
 
 public interface MovieRepository extends Neo4jRepository<Movie, Long> {
 
-    @Query(value = "MATCH (p:Person {name:\"Quentin Tarantino\"})-[r:DIRECTED]->(m:Movie), " +
-            "(m)<-[r2:ACTED_IN]-(p2:Person) RETURN *")
+    @Query(value = "MATCH (p:Person {name:\"Quentin Tarantino\"})-[r1:DIRECTED]->(m:Movie), " +
+            "(m)<-[r2:ACTED_IN]-(p2:Person), " +
+            "(m)-[r3:BELONGS_TO]->(g:Genre) RETURN *")
     Set<Movie> getAllTarantinoMovies();
 
 }
