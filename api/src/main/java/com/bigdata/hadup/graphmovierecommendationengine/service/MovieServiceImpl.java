@@ -18,4 +18,14 @@ public class MovieServiceImpl implements MovieService {
     public Set<Movie> getTarantinoMovies() {
         return Sets.newHashSet(movieRepository.getAllTarantinoMovies());
     }
+
+    @Override
+    public Set<Movie> getRandomMoviesList(Long movieId) { return Sets.newHashSet(movieRepository.getRandomMoviesList(movieId));}
+
+    @Override
+    public Set<Movie> getMoviesListByGenreAndRtings(String genreName) { return Sets.newHashSet(movieRepository.getMoviesListByGenreAndRtings(genreName));}
+
+    @Override
+    public Set<Movie> getRecomendedMovies(String genreName) { return Sets.newHashSet(movieRepository.getRecomendedMovies(genreName));}
+
 }

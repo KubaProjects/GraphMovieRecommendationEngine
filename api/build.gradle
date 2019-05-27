@@ -28,4 +28,5 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compile group: 'com.google.guava', name: 'guava', version: '27.0.1-jre'
+    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 }
