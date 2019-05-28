@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -22,7 +23,17 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Set<Movie> getAllMovies(Pageable pageable) {
-        return movieRepository.findAll(pageable).stream().collect(Collectors.toSet());
+    public List<Movie> getAllMovies(Pageable pageable) {
+        return movieRepository.findAll(pageable).stream().collect(Collectors.toList());
+    }
+
+    @Override
+    public long getAllMoviesCount(Pageable pageable) {
+        return movieRepository.findAll(pageable).getTotalElements();
+    }
+
+    @Override
+    public Movie getMovieById(long id) {
+        return movieRepository.findById(id).orElse(null);
     }
 }

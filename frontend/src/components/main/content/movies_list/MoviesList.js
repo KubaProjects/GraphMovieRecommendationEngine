@@ -2,41 +2,57 @@ import React from 'react';
 import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Button} from 'reactstrap';
 import MovieItem from './MovieItem';
 import Pager from 'react-pager';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Pagination from 'rc-pagination';
 
 export default class MoviesList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      total: 20,
-      current: 0,
-      visiblePage: 3
+      current: 1,
+      total:0
     };
   }
 
-  handlePageChanged = (newPage) => {
-    this.setState({ current : newPage });
+  onChange = (page) => {
+    this.setState({
+      current: page,
+      movies:null
+    });
+    this.loadMovies(page);
   }
 
+  componentDidMount(){
+    this.loadMovies(0);
+  }
+
+  loadMovies = (page) => {
+    const currentPage = page - 1;
+    const url = 'http://localhost:8080/movies?sort=numVotes&name.dir=desc&size=20&page='+currentPage;
+
+    fetch(url)
+    .then((response) => {
+      return response.json();
+    })
+    .then((page) => {
+      this.setState({movies:page.content, total:page.totalPages})
+    });
+  }
+
+  renderMoviesPerPage = (movie,i) => {
+    return <MovieItem movie={movie} key={movie.id}/>;
+  }
 
   render() {
+    const movies = this.state.movies;
+
     return (
-      <div className="container">
+      <div className="container text-center">
         <ul className="text-center" style={{'listStyleType': 'none'}}>
-          <MovieItem/>
-          <MovieItem/>
-          <MovieItem/>
-          <MovieItem/>
+          {movies ? movies.map(this.renderMoviesPerPage) : "" }
         </ul>
-        <div className="text-center">
-          <Pager
-              total={this.state.total}
-              current={this.state.current}
-              visiblePages={this.state.visiblePage}
-              titles={{ first: '<|', last: '>|' }}
-              className="page-link"
-              onPageChanged={this.handlePageChanged}/>
+        <div className="row justify-content-center">
+          <Pagination onChange={this.onChange} current={this.state.current} total={this.state.total} />
         </div>
       </div>
     );
