@@ -12,6 +12,14 @@ public interface PersonService {
 
     Set<Movie> getPersonMoviesList(Long personId);
 
+    Set<Person> getActorsForMovie(Long movieId);
+
+    Set<Person> getDirectorsForMovie(Long movieId);
+
+    Set<Movie> getActorRecomendation(String name);
+
+    Set<Movie> getDirectorRecomendation(String name);
+
     /*Set<Movie> getDirectedMoviesList();
 
     Set<Movie> getProducedMoviesList();
