@@ -23,12 +23,12 @@ export default class MoviesList extends React.Component {
   }
 
   componentDidMount(){
-    this.loadMovies(0);
+    this.loadMovies(1);
   }
 
   loadMovies = (page) => {
     const currentPage = page - 1;
-    const url = 'http://localhost:8080/movies?sort=numVotes&name.dir=desc&size=20&page='+currentPage;
+    const url = 'http://localhost:8080/movies?size=20&page='+currentPage;
 
     fetch(url)
     .then((response) => {

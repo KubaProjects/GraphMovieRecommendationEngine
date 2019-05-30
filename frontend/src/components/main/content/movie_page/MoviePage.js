@@ -4,16 +4,42 @@ import {Card, CardTitle, CardText} from 'reactstrap';
 import StarRatings from 'react-star-ratings';
 
 export default class MoviePage extends React.Component {
+
   constructor(props) {
     super(props);
 
     this.state = {
-      movie:null
+      movie:null,
+      rating:null
     }
   }
 
   writeArray = (word, i) => {
     return i>0 ? ", "+word.name : word.name;
+  }
+
+  changeRating = ( newRating, name ) => {
+    this.setState({
+      rating: newRating*2
+    });
+
+    var data = {}
+    data['rate']=newRating*2
+
+
+    const url="http://localhost:8080/movies/rate/"+this.state.movie.id;
+
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: newRating*2
+    })
+    .then(response => response!=200 ? console.log(response) : "");
+
   }
 
   componentDidMount(){
@@ -24,7 +50,8 @@ export default class MoviePage extends React.Component {
       return response.json();
     })
     .then((movie) => {
-      this.setState({movie:movie})
+      this.setState({movie:movie,
+                      rating:movie.rating})
     });
   }
 
@@ -39,7 +66,7 @@ export default class MoviePage extends React.Component {
     const musicComposers = movie ? movie.musicComposers : null;
     const numVotes = movie ? movie.numVotes : null;
     const producers = movie ? movie.producers : null;
-    const rating = movie ? movie.rating : null;
+    const rating = this.state.rating;
     const writers = movie ? movie.writers : null;
     const year = movie ? movie.year : null;
     const genres = movie ? movie.genres : null;
@@ -52,6 +79,8 @@ export default class MoviePage extends React.Component {
           <div className="my-3">
             <StarRatings
               rating={rating ? rating/2 : 0}
+              starRatedColor="#ed8a19"
+              changeRating={this.changeRating}
               starDimension="25px"
               starSpacing="5px"
               numberOfStars={5}

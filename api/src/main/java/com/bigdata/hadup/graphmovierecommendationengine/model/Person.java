@@ -1,12 +1,10 @@
 package com.bigdata.hadup.graphmovierecommendationengine.model;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.*;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 @NodeEntity
 public class Person implements Serializable {
@@ -45,7 +43,14 @@ public class Person implements Serializable {
     @Relationship(type = "EDITED_BY", direction = Relationship.OUTGOING)
     public Set<Movie> editedByMoviesList;*/
 
+    @Relationship(type = "RATED", direction = Relationship.OUTGOING)
+    public Set<Rated> ratedList;
+
     public Person() {
+    }
+
+    public Person(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -135,6 +140,14 @@ public class Person implements Serializable {
     public void setEditedByMoviesList(Set<Movie> editedByMoviesList) {
         this.editedByMoviesList = editedByMoviesList;
     }*/
+
+    public Set<Rated> getRatedList() {
+        return ratedList;
+    }
+
+    public void setRatedList(Set<Rated> ratedList) {
+        this.ratedList = ratedList;
+    }
 
     @Override
     public String toString() {
