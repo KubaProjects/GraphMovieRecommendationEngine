@@ -1,12 +1,10 @@
 package com.bigdata.hadup.graphmovierecommendationengine.model;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Property;
+import org.neo4j.ogm.annotation.*;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 @NodeEntity
 public class Person implements Serializable {
@@ -45,7 +43,14 @@ public class Person implements Serializable {
     @Relationship(type = "EDITED_BY", direction = Relationship.OUTGOING)
     public Set<Movie> editedByMoviesList;*/
 
+    @Relationship(type = "RATED", direction = Relationship.OUTGOING)
+    public Set<Rated> ratedList;
+
     public Person() {
+    }
+
+    public Person(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -136,21 +141,12 @@ public class Person implements Serializable {
         this.editedByMoviesList = editedByMoviesList;
     }*/
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return Objects.equals(id, person.id) &&
-                Objects.equals(additionalId, person.additionalId) &&
-                Objects.equals(name, person.name) &&
-                Objects.equals(birthYear, person.birthYear) &&
-                Objects.equals(deathYear, person.deathYear);
+    public Set<Rated> getRatedList() {
+        return ratedList;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, additionalId, name, birthYear, deathYear);
+    public void setRatedList(Set<Rated> ratedList) {
+        this.ratedList = ratedList;
     }
 
     @Override
