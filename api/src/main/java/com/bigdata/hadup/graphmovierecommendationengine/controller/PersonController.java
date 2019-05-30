@@ -1,6 +1,7 @@
 package com.bigdata.hadup.graphmovierecommendationengine.controller;
 
 import com.bigdata.hadup.graphmovierecommendationengine.model.Movie;
+import com.bigdata.hadup.graphmovierecommendationengine.model.Person;
 import com.bigdata.hadup.graphmovierecommendationengine.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

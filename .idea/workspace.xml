@@ -2,44 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28f3a3e2-b3c7-4cbf-a96d-2f43a592701e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/RestAuthenticationEntryPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/SecurityJavaConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/controller/SurveyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/model/Rated.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/repository/RatedRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/login/Login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/login/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/main/Main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/main/content/movie_page/MoviePage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/main/content/movies_list/MovieItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/main/content/movies_list/MoviesList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/main/content/survey/Survey.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/main/navigation/Navigation.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/sample_movie_img.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/serviceWorker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/api/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/controller/GenreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/controller/GenreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/controller/MovieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/controller/MovieController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/controller/PersonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/model/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/model/Genre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/model/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/model/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/repository/MovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/repository/MovieRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/service/MovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/service/MovieService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/service/MovieServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/bigdata/hadup/graphmovierecommendationengine/service/MovieServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/main/navigation/Navigation.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -219,16 +182,15 @@
       <workItem from="1558804756950" duration="519000" />
       <workItem from="1558805505405" duration="346000" />
       <workItem from="1558808552128" duration="5000" />
-      <workItem from="1559246039401" duration="228000" />
+      <workItem from="1559246039401" duration="635000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1098000" />
+    <option name="totallyTimeSpent" value="1505000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26096824" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
