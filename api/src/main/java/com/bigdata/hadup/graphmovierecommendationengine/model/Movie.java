@@ -1,8 +1,10 @@
 package com.bigdata.hadup.graphmovierecommendationengine.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.neo4j.ogm.annotation.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -166,6 +168,32 @@ public class Movie implements Serializable {
 
     public void setEditors(Set<Person> editors) {
         this.editors = editors;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return Objects.equals(id, movie.id) &&
+                Objects.equals(additionalId, movie.additionalId) &&
+                Objects.equals(title, movie.title) &&
+                Objects.equals(length, movie.length) &&
+                Objects.equals(numVotes, movie.numVotes) &&
+                Objects.equals(rating, movie.rating) &&
+                Objects.equals(year, movie.year) &&
+                Objects.equals(genres, movie.genres) &&
+                Objects.equals(actors, movie.actors) &&
+                Objects.equals(directors, movie.directors) &&
+                Objects.equals(producers, movie.producers) &&
+                Objects.equals(writers, movie.writers) &&
+                Objects.equals(musicComposers, movie.musicComposers) &&
+                Objects.equals(editors, movie.editors);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, additionalId, title, length, numVotes, rating, year, genres, actors, directors, producers, writers, musicComposers, editors);
     }
 
     @Override

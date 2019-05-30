@@ -33,10 +33,10 @@ export default class MoviesItem extends React.Component {
         <Link to={'/movies/'+id} style={{ textDecoration: 'none', color: '#000000' }}>
           <div className="card">
             <div className="row">
-              <div className="col-4">
+              <div className="col-md-4">
                 <img className="img-fluid py-5 px-2" src={sample_movie_img} alt="Movie image"/>
               </div>
-              <div className="text-left col-8">
+              <div className="text-left col-md-8">
                 <div className="text-center3 my-3">
                   <h3 className="mt-">{title ? title : ""}</h3>
                 </div>

@@ -20,10 +20,11 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
+
     @GetMapping
     @CrossOrigin
     public ResponseEntity<Page<Movie>> getAllMovies(Pageable pageable) {
-        return new ResponseEntity<>(new PageImpl<>(movieService.getAllMovies(pageable), pageable, movieService.getAllMoviesCount(pageable)), HttpStatus.OK);
+        return new ResponseEntity<>(movieService.getMoviesPage(pageable), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
@@ -32,9 +33,9 @@ public class MovieController {
         return new ResponseEntity<>(movieService.getMovieById(id), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/tarantino")
-    public ResponseEntity<Set<Movie>> getAllTarantinoMovies() {
-        return new ResponseEntity<>(movieService.getTarantinoMovies(), HttpStatus.OK);
+    @PostMapping(value = "/rate/{id}")
+    @CrossOrigin
+    public void rateMovie(@PathVariable("id") Long id, @RequestBody Integer rate) {
+        movieService.rateMovie(id, rate);
     }
-
 }
