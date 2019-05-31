@@ -1,7 +1,5 @@
 import React from 'react';
-import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Button} from 'reactstrap';
 import MovieItem from './MovieItem';
-import Pager from 'react-pager';
 import Pagination from 'rc-pagination';
 
 export default class MoviesList extends React.Component {

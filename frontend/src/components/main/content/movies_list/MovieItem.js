@@ -1,14 +1,10 @@
 import React from 'react';
 import sample_movie_img from '../../../../sample_movie_img.jpeg';
-import {Card, CardTitle, CardText} from 'reactstrap';
+import {Button} from 'reactstrap';
 import StarRatings from 'react-star-ratings';
 import { Link } from 'react-router-dom'
 
 export default class MoviesItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   writeArray = (word, i) => {
     return i>0 ? ", "+word.name : word.name;
   }
@@ -27,6 +23,7 @@ export default class MoviesItem extends React.Component {
     const writers = this.props.movie.writers;
     const year = this.props.movie.year;
     const genres = this.props.movie.genres;
+    const onSelect = this.props.onSelect;
 
     return (
       <li className="col-12 p-3 container">
@@ -53,6 +50,7 @@ export default class MoviesItem extends React.Component {
                 <p> <i className="fas fa-video fa-lg my-1"></i> <b>Directors: </b> {directors ? directors.map(this.writeArray) : "-"} </p>
               </div>
             </div>
+            {onSelect && <Button color="primary" onClick={e => onSelect(e, id)}>Wybierz film</Button>}
           </div>
         </Link>
       </li>

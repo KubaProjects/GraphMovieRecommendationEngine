@@ -1,5 +1,8 @@
 package com.bigdata.hadup.graphmovierecommendationengine.algorithm;
 
+import com.bigdata.hadup.graphmovierecommendationengine.model.Genre;
+import com.bigdata.hadup.graphmovierecommendationengine.model.Movie;
+import com.bigdata.hadup.graphmovierecommendationengine.model.Person;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -39,9 +42,31 @@ public class DataProcessing {
     Random rand = new Random();
     int rand_int2;
 
-    public void questionnaire(){
+    public void setSelectedMovies(Set<Movie> movies) {
+        List<String> genresList = Arrays.asList(this.genres);
+        for (Movie movie : movies) {
+            List<Genre> genres = new ArrayList(movie.getGenres());
+            for (Genre genre : genres) {
+                if (genresList.contains(genre.getName())) {
+                    genreSelectionCounters[genresList.indexOf(genre.getName())]++;
+                }
+            }
 
-    ArrayList<JSONObject> selectedFilms = new ArrayList<>();
+            List<Person> actors = new ArrayList(movie.getActors());
+            for (Person actor : actors) {
+                int count = actorsMap.containsKey(actor.getName()) ? actorsMap.get(actor.getName()) : 0;
+                actorsMap.put(actor.getName(), count + 1);
+            }
+
+            List<Person> directors = new ArrayList(movie.getDirectors());
+            for (Person director : directors) {
+                int count = directorsMap.containsKey(director.getName()) ? directorsMap.get(director.getName()) : 0;
+                directorsMap.put(director.getName(), count + 1);
+            }
+        }
+    }
+
+    public void questionnaire(){
 
     ArrayList<Integer> allGenreIndexes = new ArrayList<>(genres.length);
         for (int i = 0; i < genres.length; i++){
@@ -143,7 +168,6 @@ public class DataProcessing {
         System.out.println("\n");
         System.out.println("Type index of movie that you like:");
         String choice = in.nextLine();
-        selectedFilms.add(temporaryPresentedFilmStorage[Integer.parseInt(choice)]);
         genreSelectionCounters[randomGenreIndexes.get(Integer.parseInt(choice))] +=1;
         mapActors(Integer.parseInt(choice));
         mapDirectors(Integer.parseInt(choice));

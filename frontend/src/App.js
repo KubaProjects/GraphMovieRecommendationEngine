@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Main from './components/main/Main';
 import Login from './components/login/Login'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 export default class App extends React.Component {
   constructor(props) {

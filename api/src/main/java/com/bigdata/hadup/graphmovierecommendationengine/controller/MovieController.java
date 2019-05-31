@@ -4,7 +4,6 @@ import com.bigdata.hadup.graphmovierecommendationengine.model.Movie;
 import com.bigdata.hadup.graphmovierecommendationengine.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 
-import javax.websocket.server.PathParam;
 import java.util.Set;
 
 @RestController

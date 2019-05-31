@@ -1,6 +1,6 @@
 import React from 'react';
 import './Navigation.css';
-import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Button} from 'reactstrap';
+import {Collapse, Navbar, NavbarToggler, Nav, NavItem, Button} from 'reactstrap';
 import { Link, Redirect } from 'react-router-dom'
 
 export default class Navigation extends React.Component {
