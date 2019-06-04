@@ -22,4 +22,26 @@ public class PersonServiceImpl implements PersonService {
     public Set<Movie> getPersonMoviesList(Long personId) {
         return personRepository.getPersonMoviesList(personId);
     }
+
+    @Override
+    public Set<Person> getActorsForMovie(Long movieId) {
+        return personRepository.getActorsForMovie(movieId);
+    }
+
+    @Override
+    public Set<Person> getDirectorsForMovie(Long movieId) {
+        return personRepository.getDirectorsForMovie(movieId);
+    }
+
+    @Override
+    public Set<Movie> getActorRecomendation(String name) {
+        return personRepository.getActorRecomendation(name);
+    }
+
+    @Override
+    public Set<Movie> getDirectorRecomendation(String name) {
+        return personRepository.getDirectorRecomendation(name);
+    }
+
+
 }

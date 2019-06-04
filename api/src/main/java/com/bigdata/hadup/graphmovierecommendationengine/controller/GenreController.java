@@ -26,5 +26,4 @@ public class GenreController {
         return new ResponseEntity<>(genreService.getAllGenres(), HttpStatus.OK);
     }
 
-
 }

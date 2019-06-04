@@ -11,6 +11,14 @@ public interface MovieService {
 
     Set<Movie> getTarantinoMovies();
 
+
+    Set<Movie> getRandomMoviesList(Long movieId);
+
+    Set<Movie> getMoviesListByGenreAndRtings(String genreName);
+
+    Set<Movie> getRecomendedMovies(String genreName);
+
+
     Page<Movie> getMoviesPage(Pageable pageable);
 
     List<Movie> getMoviesByGenre();
@@ -20,4 +28,5 @@ public interface MovieService {
     Movie getMovieById(long id);
 
     void rateMovie(Long movieId, Integer rate);
+
 }

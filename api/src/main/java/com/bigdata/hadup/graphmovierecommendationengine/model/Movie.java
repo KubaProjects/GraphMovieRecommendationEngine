@@ -1,10 +1,8 @@
 package com.bigdata.hadup.graphmovierecommendationengine.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.neo4j.ogm.annotation.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 

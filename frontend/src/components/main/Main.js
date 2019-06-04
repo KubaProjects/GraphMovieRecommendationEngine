@@ -24,6 +24,7 @@ export default class Main extends React.Component {
         <Switch>
           <Route exact path='/' component={MoviesList}/>
           <Route exact path='/movies' component={MoviesList}/>
+          <Route exact path='/survey' component={Survey}/>
           <Route exact path='/recommendation/by-genre' component={GenreRecommendation}/>
           <Route exact path='/recommendation/by-knn' component={KnnRecommendation}/>
           <Route exact path='/movies/:id' component={MoviePage}/>
