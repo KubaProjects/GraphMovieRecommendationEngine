@@ -25,7 +25,7 @@ public class Movie implements Serializable {
     private Integer length;
 
     @Property("numVotes")
-    private Integer numVotes;
+    private Long numVotes;
 
     @Property("rating")
     private Double rating;
@@ -90,11 +90,11 @@ public class Movie implements Serializable {
         this.length = length;
     }
 
-    public Integer getNumVotes() {
+    public Long getNumVotes() {
         return numVotes;
     }
 
-    public void setNumVotes(Integer numVotes) {
+    public void setNumVotes(Long numVotes) {
         this.numVotes = numVotes;
     }
 

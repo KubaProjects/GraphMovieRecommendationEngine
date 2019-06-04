@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -25,6 +26,18 @@ public class MovieController {
     @CrossOrigin
     public ResponseEntity<Page<Movie>> getAllMovies(Pageable pageable) {
         return new ResponseEntity<>(movieService.getMoviesPage(pageable), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/by-genre")
+    @CrossOrigin
+    public ResponseEntity<List<Movie>> getMovieByGenre() {
+        return new ResponseEntity<>(movieService.getMoviesByGenre(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/by-knn")
+    @CrossOrigin
+    public ResponseEntity<List<Movie>> getMovieByKnn() {
+        return new ResponseEntity<>(movieService.getMoviesByPearsonKnnRecommendation(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")

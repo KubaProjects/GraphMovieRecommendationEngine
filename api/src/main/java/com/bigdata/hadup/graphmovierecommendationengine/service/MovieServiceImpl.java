@@ -3,12 +3,14 @@ package com.bigdata.hadup.graphmovierecommendationengine.service;
 import com.bigdata.hadup.graphmovierecommendationengine.model.Movie;
 import com.bigdata.hadup.graphmovierecommendationengine.model.Person;
 import com.bigdata.hadup.graphmovierecommendationengine.model.Rated;
+import com.bigdata.hadup.graphmovierecommendationengine.repository.GenreRepository;
 import com.bigdata.hadup.graphmovierecommendationengine.repository.MovieRepository;
 import com.bigdata.hadup.graphmovierecommendationengine.repository.PersonRepository;
 import com.bigdata.hadup.graphmovierecommendationengine.repository.RatedRepository;
 import com.google.common.collect.Sets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -32,6 +34,9 @@ public class MovieServiceImpl implements MovieService {
     @Autowired
     private RatedRepository ratedRepository;
 
+    @Autowired
+    private GenreRepository genreRepository;
+
 
     @Override
     public Set<Movie> getTarantinoMovies() {
@@ -42,6 +47,23 @@ public class MovieServiceImpl implements MovieService {
     public Page<Movie> getMoviesPage(Pageable pageable) {
         return movieRepository.findAll(pageable);
     }
+
+    @Override
+    public List<Movie> getMoviesByGenre() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        System.out.println("Genre recommendation: " + userName);
+        return movieRepository.recommendationByCommonGenres(userName);
+    }
+
+    @Override
+    public List<Movie> getMoviesByPearsonKnnRecommendation() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        System.out.println("KNN recommendation: " + userName);
+        return movieRepository.pearsonKnnRecommendation(userName);
+    }
+
 
     @Override
     public Movie getMovieById(long id) {
@@ -61,7 +83,7 @@ public class MovieServiceImpl implements MovieService {
                 if (Objects.isNull(user)) {
                     user = new Person(userName);
                 }
-                if (user.getRatedList().stream().filter(m -> m.getMovie().equals(movie)).collect(Collectors.toSet()).size() == 0) {
+                if (Objects.isNull(user.getRatedList()) || user.getRatedList().stream().filter(m -> m.getMovie().equals(movie)).collect(Collectors.toSet()).size() == 0) {
                     ratedRepository.save(new Rated(rate, user, movie));
                 } else {
                     user.getRatedList().stream().filter(m -> m.getMovie().equals(movie)).forEach(m -> m.setRate(rate));
