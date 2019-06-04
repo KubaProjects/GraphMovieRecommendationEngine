@@ -1,6 +1,5 @@
 import React from 'react';
 import sample_movie_img from '../../../../sample_movie_img.jpeg';
-import {Card, CardTitle, CardText} from 'reactstrap';
 import StarRatings from 'react-star-ratings';
 
 export default class MoviePage extends React.Component {
@@ -38,7 +37,7 @@ export default class MoviePage extends React.Component {
         credentials: 'include',
         body: newRating*2
     })
-    .then(response => response!=200 ? console.log(response) : "");
+    .then(response => response!==200 ? console.log(response) : "");
 
   }
 
@@ -62,7 +61,6 @@ export default class MoviePage extends React.Component {
     const actors = movie ? movie.actors : null;
     const directors = movie ? movie.directors : null;
     const editors = movie ? movie.editors : null;
-    const id = movie ? movie.id : null;
     const musicComposers = movie ? movie.musicComposers : null;
     const numVotes = movie ? movie.numVotes : null;
     const producers = movie ? movie.producers : null;
