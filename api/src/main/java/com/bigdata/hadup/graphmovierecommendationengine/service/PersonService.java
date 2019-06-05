@@ -1,6 +1,5 @@
 package com.bigdata.hadup.graphmovierecommendationengine.service;
 
-
 import com.bigdata.hadup.graphmovierecommendationengine.model.Movie;
 import com.bigdata.hadup.graphmovierecommendationengine.model.Person;
 

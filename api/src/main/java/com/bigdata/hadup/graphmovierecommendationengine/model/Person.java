@@ -3,7 +3,6 @@ package com.bigdata.hadup.graphmovierecommendationengine.model;
 import org.neo4j.ogm.annotation.*;
 
 import java.io.Serializable;
-import java.util.Objects;
 import java.util.Set;
 
 @NodeEntity

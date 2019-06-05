@@ -6,7 +6,6 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 @NodeEntity
 public class Genre implements Serializable {
