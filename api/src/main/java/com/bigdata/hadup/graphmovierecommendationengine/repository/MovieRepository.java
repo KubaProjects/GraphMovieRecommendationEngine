@@ -38,4 +38,5 @@ public interface MovieRepository extends Neo4jRepository<Movie, Long> {
     List<Movie> pearsonKnnRecommendation(String userLogin);
 
 
+
 }
