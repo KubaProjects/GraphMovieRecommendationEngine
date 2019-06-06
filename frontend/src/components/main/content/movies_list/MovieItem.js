@@ -22,7 +22,7 @@ export default class MoviesItem extends React.Component {
     const rating = this.props.movie.rating;
     const writers = this.props.movie.writers;
     const year = this.props.movie.year;
-    const genres = this.props.movie.genres;
+    const genre = this.props.movie.genre;
     const onSelect = this.props.onSelect;
 
     return (
@@ -46,7 +46,7 @@ export default class MoviesItem extends React.Component {
                   />
                 </div>
                 <p> <i className="far fa-clock text-left fa-lg my-1"></i> <b>Length: </b> {length ? length+" min" : "-"} </p>
-//                <p> <i className="fas fa-film fa-lg my-1"></i> <b>Genres: </b> {genres ? genres.map(this.writeArray) : "-"} </p>
+                <p> <i className="fas fa-film fa-lg my-1"></i> <b>Genres: </b> {genre} </p>
                 <p> <i className="fas fa-video fa-lg my-1"></i> <b>Directors: </b> {directors} </p>
               </div>
             </div>

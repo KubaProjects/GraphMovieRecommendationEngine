@@ -21,6 +21,9 @@ public class Movie implements Serializable {
     @Property("title")
     private String title;
 
+    @Property("genre")
+    private String genre;
+
     @Property("length")
     private Integer length;
 
@@ -76,6 +79,14 @@ public class Movie implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGere(String genre) {
+        this.genre = genre;
     }
 
     public Integer getLength() {
@@ -166,6 +177,7 @@ public class Movie implements Serializable {
         return Objects.equals(id, movie.id) &&
                 Objects.equals(additionalId, movie.additionalId) &&
                 Objects.equals(title, movie.title) &&
+                Objects.equals(genre, movie.genre) &&
                 Objects.equals(length, movie.length) &&
                 Objects.equals(numVotes, movie.numVotes) &&
                 Objects.equals(rating, movie.rating) &&
@@ -180,7 +192,7 @@ public class Movie implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, additionalId, title, length, numVotes, rating, year, cinematographers, actors, composers, directors, writers, producers);
+        return Objects.hash(id, additionalId, title, genre, length, numVotes, rating, year, cinematographers, actors, composers, directors, writers, producers);
     }
 
     @Override
@@ -189,6 +201,7 @@ public class Movie implements Serializable {
                 "id=" + id +
                 ", additionalId='" + additionalId + '\'' +
                 ", title='" + title + '\'' +
+                ", genre='" + genre + '\'' +
                 ", length=" + length +
                 ", numVotes=" + numVotes +
                 ", rating=" + rating +
