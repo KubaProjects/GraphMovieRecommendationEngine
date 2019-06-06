@@ -46,8 +46,8 @@ export default class MoviesItem extends React.Component {
                   />
                 </div>
                 <p> <i className="far fa-clock text-left fa-lg my-1"></i> <b>Length: </b> {length ? length+" min" : "-"} </p>
-                <p> <i className="fas fa-film fa-lg my-1"></i> <b>Genres: </b> {genres ? genres.map(this.writeArray) : "-"} </p>
-                <p> <i className="fas fa-video fa-lg my-1"></i> <b>Directors: </b> {directors ? directors.map(this.writeArray) : "-"} </p>
+//                <p> <i className="fas fa-film fa-lg my-1"></i> <b>Genres: </b> {genres ? genres.map(this.writeArray) : "-"} </p>
+                <p> <i className="fas fa-video fa-lg my-1"></i> <b>Directors: </b> {directors} </p>
               </div>
             </div>
             {onSelect && <Button color="primary" onClick={e => onSelect(e, id)}>Wybierz film</Button>}

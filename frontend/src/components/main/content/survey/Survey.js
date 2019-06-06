@@ -15,10 +15,6 @@ export default class Survey extends React.Component {
   }
 
   componentDidMount(){
-    this.getMovies();
-  }
-
-  getMovies = () => {
     fetch(API_BASE_URL + '/survey')
       .then(response => response.json())
       .then(movies => this.setState({movies}))
@@ -28,16 +24,20 @@ export default class Survey extends React.Component {
   saveAnswer = (e, movieId) => {
     e.preventDefault();
     this.state.selectedMovieIds.push(movieId);
+    const fetchOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({movieIds: this.state.selectedMovieIds})
+    };
     if (this.state.selectedMovieIds.length < 10) {
-      this.getMovies();
+      fetch(API_BASE_URL + '/survey', fetchOptions)
+        .then(response => response.json())
+        .then(movies => this.setState({movies}))
+        .catch(error => console.log(error))
     } else {
-      fetch(API_BASE_URL + '/survey', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({movieIds: this.state.selectedMovieIds})
-      })
+      fetch(API_BASE_URL + '/survey/result', fetchOptions)
         .then(response => response.json())
         .then(movies => this.setState({movies}))
         .catch(error => console.log(error))
@@ -49,6 +49,7 @@ export default class Survey extends React.Component {
 
     return(
       <div className="container">
+        <h1 className="text-center">{this.state.selectedMovieIds.length >= 10 ? "Rekomendacje" : ""}</h1>
         <ul style={{'listStyleType': 'none'}}>
           {movies.map(movie => <MovieItem movie={movie} key={movie.id} onSelect={this.saveAnswer}/>)}
         </ul>
