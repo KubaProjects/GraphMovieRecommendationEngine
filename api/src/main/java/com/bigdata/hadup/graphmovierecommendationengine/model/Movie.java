@@ -1,10 +1,12 @@
 package com.bigdata.hadup.graphmovierecommendationengine.model;
 
-import org.neo4j.ogm.annotation.*;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Property;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.Set;
 
 @NodeEntity
 public class Movie implements Serializable {
@@ -31,27 +33,23 @@ public class Movie implements Serializable {
     @Property("year")
     private Integer year;
 
-    @Relationship(type = "BELONGS_TO", direction = Relationship.OUTGOING)
-    public Set<Genre> genres;
+    @Property("cinematographers")
+    private String cinematographers;
 
-    @Relationship(type = "ACTED_IN", direction = Relationship.INCOMING)
-    public Set<Person> actors;
+    @Property("actors")
+    private String actors;
 
-    @Relationship(type = "DIRECTED", direction = Relationship.INCOMING)
-    public Set<Person> directors;
+    @Property("composers")
+    private String composers;
 
-    @Relationship(type = "PRODUCED_BY", direction = Relationship.INCOMING)
-    public Set<Person> producers;
+    @Property("directors")
+    private String directors;
 
-    @Relationship(type = "WROTE", direction = Relationship.INCOMING)
-    public Set<Person> writers;
+    @Property("writers")
+    private String writers;
 
-    @Relationship(type = "COMPOSED_MUSIC_IN", direction = Relationship.INCOMING)
-    public Set<Person> musicComposers;
-
-    @Relationship(type = "EDITED_BY", direction = Relationship.INCOMING)
-    public Set<Person> editors;
-
+    @Property("producers")
+    private String producers;
 
     public Movie() {
     }
@@ -112,60 +110,52 @@ public class Movie implements Serializable {
         this.year = year;
     }
 
-    public Set<Genre> getGenres() {
-        return genres;
+    public String getCinematographers() {
+        return cinematographers;
     }
 
-    public void setGenres(Set<Genre> genres) {
-        this.genres = genres;
+    public void setCinematographers(String cinematographers) {
+        this.cinematographers = cinematographers;
     }
 
-    public Set<Person> getActors() {
+    public String getActors() {
         return actors;
     }
 
-    public void setActors(Set<Person> actors) {
+    public void setActors(String actors) {
         this.actors = actors;
     }
 
-    public Set<Person> getDirectors() {
+    public String getComposers() {
+        return composers;
+    }
+
+    public void setComposers(String composers) {
+        this.composers = composers;
+    }
+
+    public String getDirectors() {
         return directors;
     }
 
-    public void setDirectors(Set<Person> directors) {
+    public void setDirectors(String directors) {
         this.directors = directors;
     }
 
-    public Set<Person> getProducers() {
-        return producers;
-    }
-
-    public void setProducers(Set<Person> producers) {
-        this.producers = producers;
-    }
-
-    public Set<Person> getWriters() {
+    public String getWriters() {
         return writers;
     }
 
-    public void setWriters(Set<Person> writers) {
+    public void setWriters(String writers) {
         this.writers = writers;
     }
 
-    public Set<Person> getMusicComposers() {
-        return musicComposers;
+    public String getProducers() {
+        return producers;
     }
 
-    public void setMusicComposers(Set<Person> musicComposers) {
-        this.musicComposers = musicComposers;
-    }
-
-    public Set<Person> getEditors() {
-        return editors;
-    }
-
-    public void setEditors(Set<Person> editors) {
-        this.editors = editors;
+    public void setProducers(String producers) {
+        this.producers = producers;
     }
 
     @Override
@@ -180,18 +170,17 @@ public class Movie implements Serializable {
                 Objects.equals(numVotes, movie.numVotes) &&
                 Objects.equals(rating, movie.rating) &&
                 Objects.equals(year, movie.year) &&
-                Objects.equals(genres, movie.genres) &&
+                Objects.equals(cinematographers, movie.cinematographers) &&
                 Objects.equals(actors, movie.actors) &&
+                Objects.equals(composers, movie.composers) &&
                 Objects.equals(directors, movie.directors) &&
-                Objects.equals(producers, movie.producers) &&
                 Objects.equals(writers, movie.writers) &&
-                Objects.equals(musicComposers, movie.musicComposers) &&
-                Objects.equals(editors, movie.editors);
+                Objects.equals(producers, movie.producers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, additionalId, title, length, numVotes, rating, year, genres, actors, directors, producers, writers, musicComposers, editors);
+        return Objects.hash(id, additionalId, title, length, numVotes, rating, year, cinematographers, actors, composers, directors, writers, producers);
     }
 
     @Override
@@ -204,6 +193,12 @@ public class Movie implements Serializable {
                 ", numVotes=" + numVotes +
                 ", rating=" + rating +
                 ", year=" + year +
+                ", cinematographers='" + cinematographers + '\'' +
+                ", actors='" + actors + '\'' +
+                ", composers='" + composers + '\'' +
+                ", directors='" + directors + '\'' +
+                ", writers='" + writers + '\'' +
+                ", producers='" + producers + '\'' +
                 '}';
     }
 }

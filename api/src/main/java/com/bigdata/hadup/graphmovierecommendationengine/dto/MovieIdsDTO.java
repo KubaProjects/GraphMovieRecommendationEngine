@@ -1,14 +1,10 @@
 package com.bigdata.hadup.graphmovierecommendationengine.dto;
 
-/**
- *
- * @author mateusz
- */
 public class MovieIdsDTO {
 
-    long[] movieIds;
+    Long[] movieIds;
 
-    public long[] getMovieIds() {
+    public Long[] getMovieIds() {
         return movieIds;
     }
 
