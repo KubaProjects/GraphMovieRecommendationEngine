@@ -8,6 +8,8 @@ import com.bigdata.hadup.graphmovierecommendationengine.repository.MovieReposito
 import com.bigdata.hadup.graphmovierecommendationengine.repository.PersonRepository;
 import com.bigdata.hadup.graphmovierecommendationengine.repository.RatedRepository;
 import com.google.common.collect.Sets;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +24,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class MovieServiceImpl implements MovieService {
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private MovieRepository movieRepository;
@@ -60,7 +64,7 @@ public class MovieServiceImpl implements MovieService {
     public List<Movie> getMoviesByGenre() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
-        System.out.println("Genre recommendation: " + userName);
+        logger.info("Genre recommendation: " + userName);
         return movieRepository.recommendationByCommonGenres(userName);
     }
 
@@ -68,7 +72,7 @@ public class MovieServiceImpl implements MovieService {
     public List<Movie> getMoviesByPearsonKnnRecommendation() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
-        System.out.println("KNN recommendation: " + userName);
+        logger.info("KNN recommendation: " + userName);
         return movieRepository.pearsonKnnRecommendation(userName);
     }
 
@@ -86,7 +90,6 @@ public class MovieServiceImpl implements MovieService {
             Person user = personRepository.findByName(userName);
             Movie movie = movieRepository.findById(movieId).get();
 
-
             if (Objects.nonNull(movie)) {
                 if (Objects.isNull(user)) {
                     user = new Person(userName);
@@ -99,8 +102,6 @@ public class MovieServiceImpl implements MovieService {
                 personRepository.save(user);
             }
         }
-
-
     }
 
 }

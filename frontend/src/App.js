@@ -8,16 +8,20 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    fetch("http://localhost:8080/logout", {
-      credentials: 'include',
-      method: 'POST',
-    }).catch(e => console.log(e));
-
     this.state = {
-      isAuthenticated:false
+      isAuthenticated:null
     };
   }
 
+  componentDidMount(){
+    fetch("http://localhost:8080/persons/authenticated",{
+      credentials: 'include'
+    }).then((response) => {
+      return response.json();
+    }).then((res) => {
+      this.setIsAuthenticated(res);
+    });
+  }
 
   setIsAuthenticated = (auth) => {
     this.setState({

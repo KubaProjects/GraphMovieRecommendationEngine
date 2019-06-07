@@ -41,7 +41,7 @@ export default class Navigation extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="mr-2">
-                <Link to={'/survey'} style={{ textDecoration: 'none', color: '#000000' }}><Button color="secondary">Survey</Button></Link>
+                <Link to={'/survey'} style={{ textDecoration: 'none', color: '#000000' }}><Button color="warning">Survey</Button></Link>
               </NavItem>
               <NavItem className="mr-2">
                 <Link to={'/recommendation/by-genre'} style={{ textDecoration: 'none', color: '#000000' }}><Button color="secondary">Genre recommendation</Button></Link>
