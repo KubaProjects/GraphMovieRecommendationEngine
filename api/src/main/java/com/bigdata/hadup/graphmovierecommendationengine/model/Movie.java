@@ -39,6 +39,9 @@ public class Movie implements Serializable {
     @Property("actors")
     private String actors;
 
+    @Property("genre")
+    private String genre;
+
     @Property("composers")
     private String composers;
 
@@ -158,6 +161,14 @@ public class Movie implements Serializable {
         this.producers = producers;
     }
 
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -175,12 +186,13 @@ public class Movie implements Serializable {
                 Objects.equals(composers, movie.composers) &&
                 Objects.equals(directors, movie.directors) &&
                 Objects.equals(writers, movie.writers) &&
+                Objects.equals(genre, movie.genre) &&
                 Objects.equals(producers, movie.producers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, additionalId, title, length, numVotes, rating, year, cinematographers, actors, composers, directors, writers, producers);
+        return Objects.hash(id, additionalId, title, length, numVotes, rating, year, cinematographers, actors, composers, directors, writers, genre, producers);
     }
 
     @Override
@@ -196,6 +208,7 @@ public class Movie implements Serializable {
                 ", cinematographers='" + cinematographers + '\'' +
                 ", actors='" + actors + '\'' +
                 ", composers='" + composers + '\'' +
+                ", genre='" + genre + '\'' +
                 ", directors='" + directors + '\'' +
                 ", writers='" + writers + '\'' +
                 ", producers='" + producers + '\'' +

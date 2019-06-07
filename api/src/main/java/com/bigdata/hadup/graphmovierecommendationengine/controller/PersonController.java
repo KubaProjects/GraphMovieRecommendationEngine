@@ -6,8 +6,11 @@ import com.bigdata.hadup.graphmovierecommendationengine.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Objects;
 import java.util.Set;
 
 @RestController
@@ -16,6 +19,18 @@ public class PersonController {
 
     @Autowired
     private PersonService personService;
+
+
+    @GetMapping(value = "/authenticated")
+    @CrossOrigin
+    public ResponseEntity<Boolean> loggedIn() {
+        if(Objects.nonNull(SecurityContextHolder.getContext().getAuthentication()) &&
+                !(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken)){
+            System.out.println(SecurityContextHolder.getContext().getAuthentication().getName());
+            return new ResponseEntity<>(SecurityContextHolder.getContext().getAuthentication().isAuthenticated(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(false, HttpStatus.OK);
+    }
 
 
     @GetMapping(value = "/{id}/movies")

@@ -22,7 +22,6 @@ export default class GenreRecommendation extends React.Component {
     const currentPage = page - 1;
     const url = 'http://localhost:8080/movies/by-genre';
 
-      console.log("Test");
     fetch(url,{
     credentials: 'include'})
     .then((response) => {
@@ -43,7 +42,7 @@ export default class GenreRecommendation extends React.Component {
     return (
       <div className="container text-center">
         <ul className="text-center" style={{'listStyleType': 'none'}}>
-          {movies ? movies.map(this.renderMoviesPerPage) : "" }
+          {movies ? movies.map(this.renderMoviesPerPage) : <i className="fas fa-refresh fa-spin mt-5" style={{'fontSize': '40px'}}></i> }
         </ul>
       </div>
     );
