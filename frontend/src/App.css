@@ -10,3 +10,10 @@
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   cursor: pointer;
 }
+
+#skippButton{
+  width: 93%;
+  margin-left: 60px;
+  margin-bottom: 20px;
+  background: #2fc322;
+}

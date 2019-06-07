@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieItem from '../movies_list/MovieItem';
+import {Button} from 'reactstrap';
 
 const API_BASE_URL = 'http://localhost:8080';
 
@@ -44,6 +45,14 @@ export default class Survey extends React.Component {
     }
   };
 
+  skippOnePage = () => {
+    fetch(API_BASE_URL + '/survey')
+        .then(response => response.json())
+        .then(movies => this.setState({movies}))
+        .catch(error => console.log(error))
+  }
+
+
   render() {
     const movies = this.state.movies;
 
@@ -53,7 +62,9 @@ export default class Survey extends React.Component {
         <ul style={{'listStyleType': 'none'}}>
           {movies.map(movie => <MovieItem movie={movie} key={movie.id} onSelect={this.saveAnswer}/>)}
         </ul>
+        <Button id="skippButton" color="secondary" onClick={this.skippOnePage}>Nowa propozycja</Button>
       </div>
     );
   }
 }
+
